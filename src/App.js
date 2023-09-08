@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import Routing from "./Router/Routing";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient(); // For tan satck query
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* For tan satck query provider*/}
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routing />
+        </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 }
